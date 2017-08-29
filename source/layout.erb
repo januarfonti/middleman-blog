@@ -11,7 +11,7 @@
     <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
   </head>
   <body>
-    <nav class="navbar yamm navbar-inverse" role="navigation">
+    <nav class="navbar navbar-inverse" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
@@ -42,12 +42,22 @@
       </div>
     </nav>
 
-
     <div id="main" role="main">
-      <%= yield %>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <%= yield %>
+          </div>
+          
+          
+        </div>
+      </div>
     </div>
+    
 
-    <aside>
+    
+
+    <!--<aside>
       <h2>Recent Articles</h2>
       <ol>
         <% blog.articles[0...10].each do |article| %>
@@ -68,7 +78,7 @@
       </ol>
 
       
-    </aside>
+    </aside>-->
 
     <hr class="colorgraph">
     <section class="footer">

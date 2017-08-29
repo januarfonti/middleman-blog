@@ -24,6 +24,7 @@ require 'tzinfo'
 Time.zone = 'Asia/Jakarta'
 activate :sprockets
 activate :directory_indexes
+set :relative_links, true 
 
 activate :blog do |blog|
   blog.custom_collections = {
@@ -38,13 +39,13 @@ activate :blog do |blog|
   blog.permalink = "{category}/{year}/{month}/{day}/{title}.html"
   # Matcher for blog source files
   blog.sources = "posts/{title}-{year}-{month}-{day}.html"
-  # blog.taglink = "tags/{tag}.html"
-  # blog.layout = "layout"
-  # blog.summary_separator = /(READMORE)/
-  # blog.summary_length = 250
-  # blog.year_link = "{year}.html"
-  # blog.month_link = "{year}/{month}.html"
-  # blog.day_link = "{year}/{month}/{day}.html"
+  blog.taglink = "tags/{tag}.html"
+  blog.layout = "blog_layout"
+  blog.summary_separator = /(READMORE)/
+  blog.summary_length = 250
+  blog.year_link = "{year}.html"
+  blog.month_link = "{year}/{month}.html"
+  blog.day_link = "{year}/{month}/{day}.html"
   blog.default_extension = ".md"
 
   
@@ -57,6 +58,8 @@ activate :blog do |blog|
   blog.page_link = "page/{num}"
 end
 
+
+
 page "/feed.xml", layout: false
 # Reload the browser automatically whenever files change
 configure :development do
@@ -64,11 +67,25 @@ configure :development do
 end
 
 # Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
+helpers do
+  def some_helper
+    "Helping"
+  end
+
+  # def build_categories
+  #   categories = []
+  #   blog.articles.each do |article|
+  #   category = {category: article.metadata[:page]['category'], category_count: 0}
+  #   unless categories.find {|c| c[:category] == category[:category]}
+  #   categories.push(category)
+  #   end
+  #   current_count = categories.find {|c| c[:category] == category[:category]}[:category_count]
+  #   categories.find {|c| c[:category] == category[:category]}[:category_count] = current_count += 1
+  #   end
+  #   return categories
+  # end
+
+end
 
 # Build-specific configuration
 configure :build do
