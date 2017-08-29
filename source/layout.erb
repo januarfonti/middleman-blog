@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag :all %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Blog Title<%= ' - ' + current_article.title unless current_article.nil? %></title>
+    <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
+  </head>
+  <body>
+    <nav class="navbar yamm navbar-inverse" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://dnetprovider.id/">
+            <img alt="D~NET" src="<%= image_path('logo.png') %>">
+          </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'Home', '/' %></li>
+            
+            
+            
+            
+            
+              
+            
+
+            
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav>
+
+
+    <div id="main" role="main">
+      <%= yield %>
+    </div>
+
+    <aside>
+      <h2>Recent Articles</h2>
+      <ol>
+        <% blog.articles[0...10].each do |article| %>
+          <li><%= link_to article.title, article %> <span><%= article.date.strftime('%b %e') %></span></li>
+        <% end %>
+      </ol>
+
+      <h2>Tags</h2>
+      <ol>
+        <% blog.tags.each do |tag, articles| %>
+          <li><%= link_to "#{tag} (#{articles.size})", tag_path(tag) %></li>
+        <% end %>
+      </ol>
+
+      <h2>Categories</h2>
+      <ol>
+        
+      </ol>
+
+      
+    </aside>
+
+    <hr class="colorgraph">
+    <section class="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row margin20">
+            <div class="col-md-3 col-xs-12">
+              <h4>Sitemap</h4>
+              <hr />
+              <ul>
+                <li><%= link_to 'Home', 'index.html' %></li>
+                <li><%= link_to 'FAQ', 'faq.html' %></li>
+                <li><%= link_to 'Acceptable Use Policy (AUP)', 'acceptable-use-policy.html' %></li>
+                <li><%= link_to 'About', 'about.html' %></li>
+                <li><%= link_to 'Partner', 'partner.html' %></li>
+                <li><%= link_to 'Jobs', 'jobs.html' %></li>
+                <li><%= link_to 'Contact Us', 'contact.html' %></li>
+              </ul>
+            </div>
+
+            <div class="col-md-3 col-xs-12">
+              <h4><%= link_to 'Dedicated Connectivity', 'dedicated.html' %></h4>
+              <hr />
+              <ul>
+                <li><%= link_to 'D~NET Premium', 'premium.html' %></li>
+                <li><%= link_to 'D~NET Corporate', 'corporate.html' %></li>
+                <li><%= link_to 'D~NET IIX', 'iix.html' %></li>
+                <li><%= link_to 'D~NET Loop', 'loop.html' %></li>
+              </ul>
+            </div>
+            <div class="col-md-3 col-xs-12">
+              <h4><%= link_to 'Broadband Internet Connectivity', 'broadband.html' %></h4>
+              <hr />
+              <ul>
+                <li><%= link_to 'D~NET Visol', 'visol.html' %></li>
+                <li><%= link_to 'D~NET Apartment', 'apartment.html' %></li>
+                <li><%= link_to 'D~NET Office', 'office.html' %></li>
+                <li><%= link_to 'D~NET SoHo', 'soho.html' %></li>
+              </ul>
+            </div>
+            <div class="col-md-3 col-xs-12">
+              <h4><%= link_to 'Business Solution', 'solusi-bisnis.html' %></h4>
+              <!-- <br class="enter" /> -->
+              <hr />
+              <ul>
+                <li><%= link_to 'DREAMS', 'dreams.html' %></li>
+                <li><%= link_to 'Colocation', 'colocation.html' %></li>
+                <li><%= link_to 'Smart Wifi Monitoring', 'smart-wifi-monitoring.html' %></li>
+                <li><%= link_to 'Smart Gateway', 'smart-gateway.html' %></li>
+                <li><%= link_to 'Voice', 'voice.html' %></li>
+                <!-- <li><%= link_to 'Domain & Hosting', '/domain-hosting.html' %></li> -->
+              </ul>
+            </div>
+          </div>
+          <div class="row footer-2">
+            <div class="col-md-6 col-xs-12">
+              <img class="img-responsive footer-logo margin30" src="<%= image_path('logo.png') %>" alt="D~NET">
+              <ul>
+                <li>Graha Bumi Surabaya Lt. 1 Jl. Basuki Rachmat 106 - 128</li>
+                <li>Surabaya - Indonesia 60271 | +62 31 548-0500</li>
+                <li><a href="mailto:info@dnetsurabaya.id">hello@dnetprovider.id</a></li>
+                <li><a href="#">D~NET Surabaya</a></li>
+              </ul>
+            </div>
+
+            <div class="col-md-3 col-xs-12 subscribe">
+              <p>
+                Subscribe to our mailing list to receive updates to your mail.
+              </p>
+              <form class="input-group" action="https://account.dreamsmail.id/subscribe/X2NlNmY4YzcyYmUzOTRmY2ZiNWE5NWMwMjVkMTBhNzk2/6ca0" method="POST">
+                  <input type="email" name="email" class="form-control" required>
+                   <span class="input-group-btn">
+                     <button type="submit" class="btn btn-primary">Subscribe</button>
+                  </span>
+                </form>
+                <div class="row social-wrapper">
+                  <a target="_blank" href="https://www.facebook.com/dnetprovider/"><i class="fa fa-facebook social"></i></a>
+                  <a target="_blank" href="https://twitter.com/dnetprovider"><i class="fa fa-twitter social"></i></a>
+                  <a target="_blank" href="https://www.instagram.com/dnetprovider/"><i class="fa fa-instagram social"></i></a>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-xs-12 iso">
+              <div class="row">
+                <div class="col-xs-6">
+                  <img class="img img-responsive" src="<%= image_path('iso9001.jpg') %>" />
+                </div>
+                <div class="col-xs-6">
+                  <img class="img img-responsive" src="<%= image_path('itil.png') %>" />
+                </div>
+              </div>
+
+              <div class="row" style="margin-top:20px;">
+                <div class="col-xs-6">
+                  <img class="img img-responsive" src="<%= image_path('lkpp.jpg') %>" />
+                </div>
+                <div class="col-xs-6">
+                  <img class="img img-responsive" src="<%= image_path('ecataloge.jpg') %>" />
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="copyright text-center">
+          <p>
+            Copyright &copy; 2017 D~NET, All Rights Reserved
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <%= javascript_include_tag :all %>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+.header-contact {
+  background:url("../images/contact/header-contact.jpg") no-repeat center top scroll;
+  background-size: 100% auto;
+  height: 0;
+  padding: 0; /* remove any pre-existing padding, just in case */
+  padding-bottom:43%;
+}
+
+.contact {
+  .form {
+    padding: 0 50px 0 50px;
+  }
+
+  .alamat {
+    padding: 0 50px 0 50px;
+  }
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: normal;
+    font-size: 25px;
+    opacity: 0.8;
+}

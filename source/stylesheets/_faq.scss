@@ -1,0 +1,41 @@
+.header-faq {
+  background:url("../images/faq/header.jpg") no-repeat center top scroll;
+  background-size: 100% auto;
+  height: 0;
+  padding: 0; /* remove any pre-existing padding, just in case */
+  padding-bottom:43%;
+}
+
+.faq-section {
+  .faq li {
+    padding: 20px;
+    font-size: 20px;
+    opacity: 0.8;
+    line-height: 40px;
+  }
+  .faq li.q {
+    cursor: pointer;
+    font-weight: 400;
+    img {
+      margin-right: 20px;
+      opacity: 0.8;
+    }
+  }
+  .faq li.a {
+    margin-left: 44px;
+    display: none;
+
+  }
+  .rotate {
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+  }
+  hr {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

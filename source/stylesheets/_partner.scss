@@ -1,0 +1,54 @@
+.partner-kami {
+  .title {
+    font-weight: 400;
+  }
+  .software-partner {
+    img:hover {
+      -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+      filter: grayscale(100%);
+      -webkit-transition: .3s ease-in-out;
+      -moz-transition: .3s ease-in-out;
+      -o-transition: .3s ease-in-out;
+    }
+  }
+  .list {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+    text-align: center;
+    padding:20px 40px 20px 40px;
+    margin-right: -4px;
+
+    img {
+      vertical-align: middle;
+      width: 250px;
+    }
+    img:hover {
+      -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+      filter: grayscale(100%);
+      -webkit-transition: .3s ease-in-out;
+      -moz-transition: .3s ease-in-out;
+      -o-transition: .3s ease-in-out;
+    }
+  }
+
+  h3 {
+    font-weight: 400;
+  }
+
+  .list-company {
+    img {
+      -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+      filter: grayscale(100%);
+    }
+
+    img:hover {
+      -webkit-filter: grayscale(0%);
+      -webkit-transition: .3s ease-in-out;
+      -moz-filter: grayscale(0%);
+      -moz-transition: .3s ease-in-out;
+      -o-filter: grayscale(0%);
+      -o-transition: .3s ease-in-out;
+    }
+  }
+}

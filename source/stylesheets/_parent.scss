@@ -1,0 +1,23 @@
+.parent-section {
+  .list {
+
+    padding : 0px 50px 30px 50px;
+    .desc {
+      min-height: 125px;
+    }
+    .img-dnet {
+      height: 25px;
+      padding: 0px;
+      margin-top: -7px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .parent-section {
+    .list {
+      min-height: 100%;
+      padding : 0px;
+    }
+  }
+}
