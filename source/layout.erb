@@ -7,6 +7,9 @@
     <%= stylesheet_link_tag :all %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <%= javascript_include_tag :all %>
+
     <title>Blog Title<%= ' - ' + current_article.title unless current_article.nil? %></title>
     <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
   </head>
@@ -57,7 +60,7 @@
 
     
 
-    <!--<aside>
+    <aside>
       <h2>Recent Articles</h2>
       <ol>
         <% blog.articles[0...10].each do |article| %>
@@ -72,13 +75,10 @@
         <% end %>
       </ol>
 
-      <h2>Categories</h2>
-      <ol>
-        
-      </ol>
+      
 
       
-    </aside>-->
+    </aside>
 
     <hr class="colorgraph">
     <section class="footer">
@@ -195,7 +195,7 @@
       </div>
     </section>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-    <%= javascript_include_tag :all %>
+    
+    <%= javascript_include_tag 'search' %>
   </body>
 </html>

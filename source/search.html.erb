@@ -1,0 +1,26 @@
+---
+title: Search
+---
+
+<%= javascript_include_tag 'search' %>
+
+<h1>Search</h1>
+
+<p>
+  <input type="text" id="search" placeholder="Search..." width="100%">
+</p>
+
+<div id="result-count"></div>
+
+<div class="list-group searchresults">
+</div>
+
+
+<div id="duckduckgo-fallback-search">
+  <p>If you can't find what you're looking for try searching this site via Duck Duck Go:</p>
+  <form action="http://duckduckgo.com" method="get" role="search">
+    <div class="form-group">
+      <input class="search form-control" type="text" name="q" value="site:ronallo.com " autocomplete="off">
+      </div>
+  </form>
+</div>

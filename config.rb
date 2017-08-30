@@ -26,6 +26,24 @@ activate :sprockets
 activate :directory_indexes
 set :relative_links, true 
 
+activate :search do |search|
+  # search.resources = ['index.html' 'about/', 'blog/', 'bots/', 'bots-blog/', 'demos/','experience/', 'presentations/', 'projects/', '/writing']
+  search.fields = {
+    title:   {boost: 100, store: true, required: true},
+    content: {boost: 50},
+    url:     {index: false, store: true}
+  }
+
+  # search_skip = ['Articles Tagged', 'Posts by Tag']
+
+  search.before_index = Proc.new do |to_index, to_store, resource|
+    if search_skip.any?{|ss| ss == resource.data.title}
+      throw(:skip)
+    end
+    to_store[:group] = resource.path.split('/').first
+  end
+end
+
 activate :blog do |blog|
   blog.custom_collections = {
     category: {
@@ -38,7 +56,7 @@ activate :blog do |blog|
 
   blog.permalink = "{category}/{year}/{month}/{day}/{title}.html"
   # Matcher for blog source files
-  blog.sources = "posts/{title}-{year}-{month}-{day}.html"
+  blog.sources = "{title}-{year}-{month}-{day}.html"
   blog.taglink = "tags/{tag}.html"
   blog.layout = "blog_layout"
   blog.summary_separator = /(READMORE)/
@@ -54,9 +72,16 @@ activate :blog do |blog|
 
   # Enable pagination
   blog.paginate = true
-  blog.per_page = 10
+  blog.per_page = 1
   blog.page_link = "page/{num}"
 end
+
+# activate :asset_hash do |asset_hash|
+#   asset_hash.ignore = [/demos/]
+#   asset_hash.exts = %w[ .css .js .png .jpg .eot .svg .ttf .woff .json ]
+# end
+
+
 
 
 
