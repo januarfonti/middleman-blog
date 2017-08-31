@@ -4,5 +4,8 @@
     <p><span><%= current_article.date.strftime('%B %d, %Y') %></span></p>
     <%= image_tag(current_page.data.featured_image, class: 'img img-responsive') %>
     <%= current_article.body %>
+    <div id="share"></div>
+    <%= disqus %>
+    <%= disqus_count %>
   </article>
 <% end %>

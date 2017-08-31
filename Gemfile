@@ -19,6 +19,7 @@ gem 'middleman-compass', '>= 4.0.0'
 gem 'bootstrap-sass', '~> 3.3.3', :require => false
 gem 'jquery-middleman'
 gem 'middleman-search', github: 'manastech/middleman-search'
+gem 'middleman-disqus'
 
 gem 'redcarpet', '~> 3.3', '>= 3.3.3'
 

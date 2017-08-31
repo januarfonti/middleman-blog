@@ -1,6 +1,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require lunr.min
+//= require jssocials.min
 
 var action = 'click';
 var speed = "500";
@@ -22,6 +23,8 @@ if(navigator.userAgent.indexOf("Speed Insights") == -1) {
 }
 
 $(document).ready(function() {
-  
+  $("#share").jsSocials({
+    shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
+  });
 
 });

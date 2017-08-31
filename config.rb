@@ -26,22 +26,40 @@ activate :sprockets
 activate :directory_indexes
 set :relative_links, true 
 
+# activate :search do |search|
+#   search.resources = ['index.html']
+#   search.fields = {
+#     title:   {boost: 100, store: true, required: true},
+#     content: {boost: 50},
+#     url:     {index: false, store: true}
+#   }
+
+#   search_skip = ['Articles Tagged', 'Posts by Tag']
+
+#   # search.before_index = Proc.new do |to_index, to_store, resource|
+#   #   if search_skip.any?{|ss| ss == resource.data.title}
+#   #     throw(:skip)
+#   #   end
+#   #   to_store[:group] = resource.path.split('/').first
+#   # end
+# end
+
 activate :search do |search|
-  # search.resources = ['index.html' 'about/', 'blog/', 'bots/', 'bots-blog/', 'demos/','experience/', 'presentations/', 'projects/', '/writing']
+  search.resources = ['blog/', 'index.html', 'contactus/index.html']
+  search.index_path = 'search/lunr-index.json' # defaults to `search.json`
+  search.lunr_dirs = ['source/vendor/lunr-custom/'] # optional alternate paths where to look for lunr js files
+  # search.language = 'es' # defaults to 'en'
+  search_skip = ['Articles Tagged', 'Posts by Tag']
   search.fields = {
     title:   {boost: 100, store: true, required: true},
     content: {boost: 50},
-    url:     {index: false, store: true}
+    url:     {index: false, store: true},
+    author:  {boost: 30}
   }
+end
 
-  # search_skip = ['Articles Tagged', 'Posts by Tag']
-
-  search.before_index = Proc.new do |to_index, to_store, resource|
-    if search_skip.any?{|ss| ss == resource.data.title}
-      throw(:skip)
-    end
-    to_store[:group] = resource.path.split('/').first
-  end
+activate :disqus do |d|
+  d.shortname = 'dnetprovidercoba' # Replace with your Disqus shortname.
 end
 
 activate :blog do |blog|

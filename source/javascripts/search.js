@@ -2,8 +2,8 @@ var lunrIndex = null;
 var lunrData  = null;
 // Download index data
 $.ajax({
-  url: "/search.json",
-  cache: false,
+  url: "search/lunr-index.json",
+  cache: true,
   method: 'GET',
   success: function(data) {
     lunrData = data;
